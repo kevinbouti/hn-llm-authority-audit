@@ -1,55 +1,62 @@
 # Show HN: LLM Authority Citation Audit
 
-Public landing page for a high-impact Hacker News launch.
+A small but fully runnable benchmark that measures whether LLM-generated authority references are valid and resolvable.
 
-## Claim
+## Why this exists
 
-We evaluated LLM outputs against authority-oriented references and measured citation reliability failures at reproducible scale.
+Citation reliability is often discussed with anecdotes. This repo gives a reproducible baseline with explicit failure categories.
 
-## Why it matters
+## What is included
 
-If citations and authority references are wrong, trust collapses in research, compliance, and knowledge workflows.
+- `data/authorities.json`: authority records (canonical labels + aliases)
+- `data/model_outputs.jsonl`: model-produced references to evaluate
+- `scripts/evaluate.py`: deterministic evaluator
+- `results/summary.json`: generated metrics
 
-## Scope
+## Current results (real run)
 
-- Citation validity across sampled outputs
-- Reference resolution success (authority IDs / linked references)
-- Hallucination categories (invented identifiers, mismatched entities)
-- Severity and downstream risk
+Computed with:
 
-## Method
+`python3 scripts/evaluate.py`
 
-1. Build a benchmark set of authority-linked records.
-2. Generate model outputs with fixed prompts.
-3. Validate references against authoritative targets.
-4. Score outputs with deterministic rules.
-5. Publish scripts, schema, and reproducibility instructions.
+- Valid citation rate: **57.14%** (4/7)
+- Non-resolving references: **28.57%** (2/7)
+- High-severity failures: **42.86%** (3/7)
+- Top failure mode: **invented_or_unknown_id**
 
-## Results (replace with your numbers)
+## Evaluation logic
 
-- Valid citation rate: **XX.X%**
-- Non-resolving references: **YY.Y%**
-- High-severity hallucinations: **ZZ.Z%**
-- Most frequent failure mode: **<mode>**
+Each reference is scored with deterministic rules:
 
-## Reproducibility
+1. **Unknown authority ID** -> `invented_or_unknown_id` (high severity)
+2. **Known ID but wrong entity name** -> `entity_name_mismatch` (high severity)
+3. **Known ID + accepted canonical/alias name** -> valid
 
-- Code: `<repo-url>`
-- Data schema: `<schema-url>`
-- Evaluation script: `<script-url>`
-- Repro guide: `<repro-url>`
+## Run locally
+
+```bash
+python3 scripts/evaluate.py
+cat results/summary.json
+```
+
+## Extend this benchmark
+
+- Swap `data/model_outputs.jsonl` with your own outputs
+- Add records to `data/authorities.json`
+- Compare multiple models by adding a `model` field per sample
 
 ## Limits
 
-- Current focus is authority/citation-style references.
-- Results vary by model, prompt, and decoding configuration.
-- This is not a full factuality benchmark; it isolates reference reliability.
+- This is a minimal reference-reliability benchmark, not full factuality evaluation.
+- The included dataset is intentionally small for transparent inspection.
 
-## Ready-to-post HN title
+## HN post package
 
-`Show HN: We measured LLM authority citation errors on real records`
+Suggested title:
 
-## Ready-to-post first comment
+`Show HN: We built a reproducible audit for LLM authority citation failures`
 
-Happy to share raw failure cases and evaluation scripts in-thread.  
-If useful, I can also publish a model-by-model breakdown and a stricter validator profile.
+Suggested first comment:
+
+This repo is intentionally small and fully inspectable.  
+If there is interest, I can publish a larger multilingual dataset and per-model breakdown.

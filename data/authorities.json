@@ -1,0 +1,22 @@
+[
+  {
+    "id": "VIAF:56606410",
+    "label": "Ada Lovelace",
+    "aliases": ["Augusta Ada King", "Countess of Lovelace"]
+  },
+  {
+    "id": "VIAF:49218039",
+    "label": "Alan Turing",
+    "aliases": ["Alan Mathison Turing"]
+  },
+  {
+    "id": "VIAF:27063555",
+    "label": "Marie Curie",
+    "aliases": ["Maria Sklodowska-Curie"]
+  },
+  {
+    "id": "VIAF:123393054",
+    "label": "Katherine Johnson",
+    "aliases": ["Creola Katherine Johnson"]
+  }
+]

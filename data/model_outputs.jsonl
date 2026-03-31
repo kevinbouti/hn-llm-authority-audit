@@ -1,0 +1,4 @@
+{"sample_id":"s1","model":"demo-model","prompt":"Give authority IDs for Ada Lovelace and Alan Turing.","references":[{"name":"Ada Lovelace","authority_id":"VIAF:56606410"},{"name":"Alan Turing","authority_id":"VIAF:49218039"}]}
+{"sample_id":"s2","model":"demo-model","prompt":"Give authority IDs for Marie Curie and Katherine Johnson.","references":[{"name":"Marie Curie","authority_id":"VIAF:27063555"},{"name":"Katherine Johnson","authority_id":"VIAF:99999999"}]}
+{"sample_id":"s3","model":"demo-model","prompt":"Give authority IDs for Alan Turing.","references":[{"name":"Alan Turning","authority_id":"VIAF:49218039"}]}
+{"sample_id":"s4","model":"demo-model","prompt":"Give authority IDs for Ada Lovelace.","references":[{"name":"Ada Lovelace","authority_id":"VIAF:56606410"},{"name":"Ada Lovelace","authority_id":"VIAF:12345678"}]}

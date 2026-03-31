@@ -1,0 +1,14 @@
+{
+  "total_references": 7,
+  "valid_references": 4,
+  "valid_rate_pct": 57.14,
+  "non_resolving_references": 2,
+  "non_resolving_rate_pct": 28.57,
+  "high_severity_failures": 3,
+  "high_severity_rate_pct": 42.86,
+  "top_failure_mode": "invented_or_unknown_id",
+  "failure_mode_counts": {
+    "invented_or_unknown_id": 2,
+    "entity_name_mismatch": 1
+  }
+}

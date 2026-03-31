@@ -1,0 +1,41 @@
+{
+  "model-alpha": {
+    "total_references": 8,
+    "valid_references": 8,
+    "valid_rate_pct": 100.0,
+    "non_resolving_references": 0,
+    "non_resolving_rate_pct": 0.0,
+    "high_severity_failures": 0,
+    "high_severity_rate_pct": 0.0,
+    "top_failure_mode": "none",
+    "failure_mode_counts": {}
+  },
+  "model-beta": {
+    "total_references": 8,
+    "valid_references": 5,
+    "valid_rate_pct": 62.5,
+    "non_resolving_references": 2,
+    "non_resolving_rate_pct": 25.0,
+    "high_severity_failures": 3,
+    "high_severity_rate_pct": 37.5,
+    "top_failure_mode": "invented_or_unknown_id",
+    "failure_mode_counts": {
+      "entity_name_mismatch": 1,
+      "invented_or_unknown_id": 2
+    }
+  },
+  "model-gamma": {
+    "total_references": 8,
+    "valid_references": 5,
+    "valid_rate_pct": 62.5,
+    "non_resolving_references": 2,
+    "non_resolving_rate_pct": 25.0,
+    "high_severity_failures": 3,
+    "high_severity_rate_pct": 37.5,
+    "top_failure_mode": "invented_or_unknown_id",
+    "failure_mode_counts": {
+      "invented_or_unknown_id": 2,
+      "entity_name_mismatch": 1
+    }
+  }
+}

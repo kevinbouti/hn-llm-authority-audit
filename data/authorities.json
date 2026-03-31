@@ -18,5 +18,25 @@
     "id": "VIAF:123393054",
     "label": "Katherine Johnson",
     "aliases": ["Creola Katherine Johnson"]
+  },
+  {
+    "id": "VIAF:66462042",
+    "label": "Grace Hopper",
+    "aliases": ["Grace Brewster Murray Hopper"]
+  },
+  {
+    "id": "VIAF:95218067",
+    "label": "Donald Knuth",
+    "aliases": ["Donald E. Knuth"]
+  },
+  {
+    "id": "VIAF:108293613",
+    "label": "Tim Berners-Lee",
+    "aliases": ["Timothy John Berners-Lee"]
+  },
+  {
+    "id": "VIAF:36994089",
+    "label": "Barbara Liskov",
+    "aliases": ["Barbara Jane Huberman Liskov"]
   }
 ]

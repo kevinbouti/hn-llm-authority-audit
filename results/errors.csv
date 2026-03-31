@@ -1,0 +1,7 @@
+sample_id,model,prompt,name,authority_id,failure_mode,severity
+s5,model-beta,Give authority IDs for Ada Lovelace and Alan Turing.,Alan Turning,VIAF:49218039,entity_name_mismatch,high
+s6,model-beta,Give authority IDs for Marie Curie and Katherine Johnson.,Katherine Johnson,VIAF:99999999,invented_or_unknown_id,high
+s8,model-beta,Give authority IDs for Tim Berners-Lee and Barbara Liskov.,Barbara Liskov,VIAF:11111111,invented_or_unknown_id,high
+s9,model-gamma,Give authority IDs for Ada Lovelace and Alan Turing.,Ada Lovelace,VIAF:12345678,invented_or_unknown_id,high
+s11,model-gamma,Give authority IDs for Grace Hopper and Donald Knuth.,Donald Knuth,VIAF:00000000,invented_or_unknown_id,high
+s12,model-gamma,Give authority IDs for Tim Berners-Lee and Barbara Liskov.,Tim Berners Lee,VIAF:108293613,entity_name_mismatch,high

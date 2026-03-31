@@ -1,62 +1,85 @@
-# Show HN: LLM Authority Citation Audit
+# Show HN: LLM Authority Citation Audit v2
 
-A small but fully runnable benchmark that measures whether LLM-generated authority references are valid and resolvable.
+A runnable benchmark to measure whether LLM-generated authority references are valid, resolvable, and entity-consistent.
 
 ## Why this exists
 
-Citation reliability is often discussed with anecdotes. This repo gives a reproducible baseline with explicit failure categories.
+Most citation-hallucination discussions are anecdotal. This repository turns the problem into reproducible metrics with explicit failure classes and per-model breakdowns.
 
-## What is included
+## What's inside
 
-- `data/authorities.json`: authority records (canonical labels + aliases)
-- `data/model_outputs.jsonl`: model-produced references to evaluate
-- `scripts/evaluate.py`: deterministic evaluator
-- `results/summary.json`: generated metrics
+- `data/authorities.json` -> authority records (canonical labels + aliases)
+- `data/model_outputs.jsonl` -> model outputs to evaluate
+- `scripts/evaluate.py` -> deterministic evaluator
+- `results/summary.json` -> global metrics + model ranking
+- `results/per_model.json` -> per-model metrics
+- `results/errors.csv` -> row-level failures (ready for analysis)
 
-## Current results (real run)
+## Current benchmark results (real run)
 
-Computed with:
+Run command:
 
 `python3 scripts/evaluate.py`
 
-- Valid citation rate: **57.14%** (4/7)
-- Non-resolving references: **28.57%** (2/7)
-- High-severity failures: **42.86%** (3/7)
+Global:
+
+- Valid citation rate: **75.00%** (18/24)
+- Non-resolving references: **16.67%** (4/24)
+- High-severity failures: **25.00%** (6/24)
 - Top failure mode: **invented_or_unknown_id**
 
-## Evaluation logic
+Model ranking by valid rate:
 
-Each reference is scored with deterministic rules:
+1. `model-alpha` -> **100.0%** valid, **0.0%** high severity
+2. `model-beta` -> **62.5%** valid, **37.5%** high severity
+3. `model-gamma` -> **62.5%** valid, **37.5%** high severity
 
-1. **Unknown authority ID** -> `invented_or_unknown_id` (high severity)
-2. **Known ID but wrong entity name** -> `entity_name_mismatch` (high severity)
-3. **Known ID + accepted canonical/alias name** -> valid
+## Scoring rules
+
+Each reference is classified with deterministic logic:
+
+1. Unknown authority ID -> `invented_or_unknown_id` (high severity)
+2. Known ID but wrong entity name -> `entity_name_mismatch` (high severity)
+3. Known ID + accepted canonical/alias name -> valid
 
 ## Run locally
 
 ```bash
 python3 scripts/evaluate.py
 cat results/summary.json
+cat results/per_model.json
+cat results/errors.csv
 ```
 
-## Extend this benchmark
+## Data format
 
-- Swap `data/model_outputs.jsonl` with your own outputs
-- Add records to `data/authorities.json`
-- Compare multiple models by adding a `model` field per sample
+Each JSONL sample in `data/model_outputs.jsonl` contains:
+
+- `sample_id`
+- `model`
+- `prompt`
+- `references`: list of `{ "name": "...", "authority_id": "..." }`
+
+## How to adapt to your own model outputs
+
+1. Replace or append rows in `data/model_outputs.jsonl`
+2. Extend `data/authorities.json` with your target entity set
+3. Re-run evaluator
+4. Compare `results/per_model.json` and inspect `results/errors.csv`
 
 ## Limits
 
-- This is a minimal reference-reliability benchmark, not full factuality evaluation.
-- The included dataset is intentionally small for transparent inspection.
+- This benchmark isolates authority-reference reliability only.
+- It does not evaluate full answer factuality, reasoning quality, or citation completeness.
+- Included data is intentionally compact for transparency and fast iteration.
 
-## HN post package
+## HN launch package
 
 Suggested title:
 
-`Show HN: We built a reproducible audit for LLM authority citation failures`
+`Show HN: LLMs invent authority IDs — reproducible benchmark + error-level outputs`
 
 Suggested first comment:
 
-This repo is intentionally small and fully inspectable.  
-If there is interest, I can publish a larger multilingual dataset and per-model breakdown.
+Small but fully inspectable benchmark: deterministic evaluator, per-model metrics, and row-level error CSV are included.  
+If useful, I can expand to a larger multilingual dataset and add stricter normalization profiles.

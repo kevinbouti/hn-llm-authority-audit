@@ -1,14 +1,31 @@
 {
-  "total_references": 7,
-  "valid_references": 4,
-  "valid_rate_pct": 57.14,
-  "non_resolving_references": 2,
-  "non_resolving_rate_pct": 28.57,
-  "high_severity_failures": 3,
-  "high_severity_rate_pct": 42.86,
+  "total_references": 24,
+  "valid_references": 18,
+  "valid_rate_pct": 75.0,
+  "non_resolving_references": 4,
+  "non_resolving_rate_pct": 16.67,
+  "high_severity_failures": 6,
+  "high_severity_rate_pct": 25.0,
   "top_failure_mode": "invented_or_unknown_id",
   "failure_mode_counts": {
-    "invented_or_unknown_id": 2,
-    "entity_name_mismatch": 1
-  }
+    "entity_name_mismatch": 2,
+    "invented_or_unknown_id": 4
+  },
+  "model_ranking": [
+    {
+      "model": "model-alpha",
+      "valid_rate_pct": 100.0,
+      "high_severity_rate_pct": 0.0
+    },
+    {
+      "model": "model-beta",
+      "valid_rate_pct": 62.5,
+      "high_severity_rate_pct": 37.5
+    },
+    {
+      "model": "model-gamma",
+      "valid_rate_pct": 62.5,
+      "high_severity_rate_pct": 37.5
+    }
+  ]
 }
